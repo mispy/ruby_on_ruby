@@ -8,7 +8,7 @@ module RubyOnRuby
     attr_accessor :v8_context
 
     def initialize
-      self.v8_context = V8::Context.new(timeout: 1000)
+      self.v8_context = V8::Context.new(timeout: 10000)
       v8_context['console'] = Console.new # Mock out `console`.
       FileLoader.setup(v8_context) # Mock out XMLHttpRequest to allow loading of Ruby Standard Library files.
       v8_context.load(File.expand_path("../../../vendor/javascripts/emscripted-ruby/ruby.closure.js", __FILE__)) # Load Ruby itself.
